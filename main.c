@@ -6,14 +6,27 @@ int cargarArreglo(int a[]);
 void mostrarArreglo(int a[], int validos);
 int sumaArreglo (int a[], int validos);
 void cargarPila (int a[],int validos, Pila *pila);
+float cargarArreglo2(float a[]);
+float sumaArreglo2 (float a[], int validos);
+int busqueda (int a[], int validos, int dato);
+int cargarArreglo3(char a[]);
+int insertarChar (char a[], int validos, char dato);
+char mostrarArreglo2(char a[], int validos);
 
 int main()
 {
+    int arreglo[6];
+    float arregloreal [100];
+    float total = 0;
+    char arreglocar [100];
     int cantidad = 0;
     int suma = 0;
-    int arreglo[6];
     int op;
     int i = 0;
+    int validos;
+    int dato;
+    char total2;
+
 
     Pila pila1;
     inicpila(&pila1);
@@ -38,9 +51,9 @@ int main()
 
     case 1:
 
-        //Hacer una función que reciba como parámetro un arreglo de números enteros y permita que
-        //el usuario ingrese valores al mismo por teclado. La función debe retornar la cantidad de
-        //elementos cargados en el arreglo (o pueden utilizar como puntero válidos)
+        //Hacer una funciÃ³n que reciba como parÃ¡metro un arreglo de nÃºmeros enteros y permita que
+        //el usuario ingrese valores al mismo por teclado. La funciÃ³n debe retornar la cantidad de
+        //elementos cargados en el arreglo (o pueden utilizar como puntero vÃ¡lidos)
 
         cantidad = cargarArreglo(arreglo);
 
@@ -50,6 +63,8 @@ int main()
 
         cantidad = cargarArreglo(arreglo);
         mostrarArreglo (arreglo, cantidad);
+
+        printf("\nLA CANT DE VALIDOS EN EL ARREGLO ES DE : %i", cantidad);
 
         break;
 
@@ -76,17 +91,53 @@ int main()
 
     case 5:
 
+    validos = cargarArreglo2(arregloreal);
+
+    total = sumaArreglo2(arregloreal, validos);
+
+    printf("La suma total del arreglo es: %.2f", total);
+
         break;
 
     case 6:
+
+        cargarArreglo(arreglo);
+
+        printf("Ingresa el dato que quieres buscar ");
+        scanf("%d", &dato);
+
+        dato = busqueda(arreglo, validos, &dato);
+
+        if (dato = 1)
+        {
+            printf("El dato se encuentra en el arreglo ");
+        }else{
+
+        printf("El dato no se encuentra en el arreglo ");
+
+        }
+
+
 
         break;
 
     case 7:
 
+        validos = cargarArreglo3(arreglocar);
+        printf("Que dato desea ingresar a el arreglo");
+        fflush(stdin);
+        scanf("%c", &dato);
+
+        total2 = insertarChar(arreglocar, validos, dato);
+
+        mostrarArreglo2(arreglocar, total2);
         break;
 
     case 8:
+
+
+
+
 
         break;
 
@@ -127,6 +178,37 @@ int cargarArreglo(int a[])
         printf("Ingresa un valor a tu arreglo\n");
         fflush(stdin);
         scanf("%i", &a[i]);
+
+        printf("Desea seguir cargando el arrelo?\n");
+        fflush(stdin);
+        scanf("%c", &eleccion);
+
+        if (i >= 99)
+        {
+
+            printf("Error");
+            eleccion = 'n';
+        }
+
+        i++;
+
+
+    }
+    return i;
+}
+
+float cargarArreglo2(float a[])
+{
+
+    char eleccion = 's';
+    int i = 0;
+
+    while (eleccion == 's')
+    {
+
+        printf("Ingresa un valor a tu arreglo\n");
+        fflush(stdin);
+        scanf("%f", &a[i]);
 
         printf("Desea seguir cargando el arrelo?\n");
         fflush(stdin);
@@ -191,6 +273,107 @@ void cargarPila (int a[],int validos, Pila *pila)
     }
 
 }
+
+float sumaArreglo2 (float a[], int validos)
+{
+
+    int i = 0;
+    float suma = 0;
+    while (i<validos)
+    {
+
+        suma = suma + a[i];
+        i++;
+    }
+
+    return suma;
+}
+
+int busqueda (int a[], int validos, int dato ){
+
+    int i = 0;
+    int flag = 0;
+    while(i < validos && flag == 0){
+
+        if (a[i] == dato){
+
+            flag = 1;
+
+        }else{
+
+            flag = 0;
+
+        }
+      i++;
+
+    }
+
+    return flag;
+}
+
+int cargarArreglo3(char a[])
+{
+
+    char eleccion = 's';
+    int i = 0;
+
+    while (eleccion == 's')
+    {
+
+        printf("Ingresa un valor a tu arreglo\n");
+        fflush(stdin);
+        scanf("%c", &a[i]);
+
+        printf("Desea seguir cargando el arrelo?\n");
+        fflush(stdin);
+        scanf("%c", &eleccion);
+
+        if (i >= 99)
+        {
+
+            printf("Error");
+            eleccion = 'n';
+        }
+
+        i++;
+
+
+    }
+    return i;
+}
+
+int insertarChar (char a[], int validos, char dato){
+
+    int i;
+i=validos-1;
+
+while (i>=0 && dato<a[i]){
+
+    a[i+1] = a[i];
+    i--;
+
+}
+
+a[i+1] = dato;
+
+return validos+1;
+    }
+char mostrarArreglo2(char a[], int validos)
+{
+
+    int i = 0;
+    printf("El contenido del arreglo es: ");
+    while(i< validos)
+    {
+
+        printf("| %d |", a[i]);
+        i++;
+
+    }
+
+}
+
+
 
 
 

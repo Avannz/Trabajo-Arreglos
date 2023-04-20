@@ -12,6 +12,9 @@ int busqueda (int a[], int validos, int dato);
 int cargarArreglo3(char a[]);
 int insertarChar (char a[], int validos, char dato);
 char mostrarArreglo2(char a[], int validos);
+int insertarChar (char a[], int validos, char dato);
+void capicua (int a[], int validos);
+void intercambiar(int a[], int validos);
 
 int main()
 {
@@ -144,10 +147,17 @@ int main()
         break;
 
     case 9:
+            cantidad = cargarArreglo(arreglo);
+            capicua(arreglo, cantidad);
 
         break;
 
     case 10:
+
+        cantidad = cargarArreglo(arreglo);
+        intercambiar(arreglo, cantidad);
+
+        mostrarArreglo(arreglo, cantidad);
 
         break;
 
@@ -396,9 +406,66 @@ int buscarMayorC (char a[], int validos){
  return posmayor;
 }
 
+void capicua (int a[], int validos){
+
+    int i = 0;
+    int j = validos-1;
+
+    int flag = 0;
+
+
+    for(i=0;i<validos;i++){
+
+        if (i==j){
+
+            j++;
+            //i++;
+            flag = 1;
+
+        }else{
+
+            flag = 0;
+
+
+        }
+
+    }
+
+    if (flag = 1){
+
+            printf("Es capicua");
+
+        }else{
+
+            printf("No es capicuaaaaaaaa");
+
+        }
+
+}
+
+void intercambiar(int a[], int validos){
+
+    int i = 0;
+    int j = validos-1;
+    int aux;
+
+    while (i != j){
+
+        aux = a[j];
+        a[j] = a[i];
+        a[i] = aux;
+
+        i++;
+        j--;
+    }
+
+}
+
+void ordenamientoSeleccion (int arreglo[], int validos){
+
+        
 
 
 
 
-
-
+}

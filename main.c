@@ -32,7 +32,7 @@ int main()
     inicpila(&pila1);
 
     printf("==========================================\n");
-    printf("=                TP1 PILAS               =\n");
+    printf("=               TP ARREGLOS              =\n");
     printf("==========================================\n");
     printf("= -Ejercicio 1             -Ejercicio 8  =\n");
     printf("= -Ejercicio 2             -Ejercicio 9  =\n");
@@ -135,9 +135,11 @@ int main()
 
     case 8:
 
+        cantidad = cargarArreglo3(arreglocar);
+        total2 = buscarMayorC(arreglocar, cantidad);
 
-
-
+        printf("La posicion del mayor caracter es: %d", total2);
+        printf("El valor es: %c", arreglocar[total2]);
 
         break;
 
@@ -366,7 +368,7 @@ char mostrarArreglo2(char a[], int validos)
     while(i< validos)
     {
 
-        printf("| %d |", a[i]);
+        printf("| %c |", a[i]);
         i++;
 
     }
@@ -374,6 +376,25 @@ char mostrarArreglo2(char a[], int validos)
 }
 
 
+int buscarMayorC (char a[], int validos){
+
+    int i = 1;
+    char mayor = a[0];
+    int posmayor = 0;
+
+    for (i = 0; i<validos; i++){
+
+        if(a[i] > mayor){
+
+          mayor = a[i];
+          posmayor = i;
+
+        }
+
+
+    }
+ return posmayor;
+}
 
 
 

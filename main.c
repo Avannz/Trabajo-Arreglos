@@ -445,18 +445,13 @@ void capicua (int a[], int validos){
 
 void intercambiar(int a[], int validos){
 
-    int i = 0;
-    int j = validos-1;
+    int i = validos-1;
     int aux;
 
-    while (i != j){
+    while (i>=0){
 
-        aux = a[j];
-        a[j] = a[i];
-        a[i] = aux;
-
-        i++;
-        j--;
+      printf("| %d |", a[i]);
+      i--;
     }
 
 }

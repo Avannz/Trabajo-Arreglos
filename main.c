@@ -15,6 +15,8 @@ char mostrarArreglo2(char a[], int validos);
 int insertarChar (char a[], int validos, char dato);
 void capicua (int a[], int validos);
 void intercambiar(int a[], int validos);
+void ordenamientoSeleccion (int arreglo[], int validos);
+int posicionMenor (int arreglo[], int posInicioBusqueda, int validos);
 
 int main()
 {
@@ -162,6 +164,11 @@ int main()
         break;
 
     case 11:
+
+        cantidad = cargarArreglo(arreglo);
+        ordenamientoSeleccion(arreglo, cantidad);
+
+        mostrarArreglo(arreglo, cantidad);
 
         break;
 
@@ -458,9 +465,39 @@ void intercambiar(int a[], int validos){
 
 void ordenamientoSeleccion (int arreglo[], int validos){
 
-        
+    int posmenor;
+    int aux;
+    int i = 0;
 
+    while(i<validos){
 
+        posmenor = posicionMenor(arreglo,i, validos);
+        aux = arreglo[posmenor];
+        arreglo[posmenor] = arreglo[i];
+        arreglo[i] = aux;
 
+        i++;
 
+    }
 }
+
+int posicionMenor (int arreglo[], int posInicioBusqueda, int validos){
+
+        int menor = arreglo[posInicioBusqueda
+        ];
+        int posmenor = posInicioBusqueda;
+        int i = posInicioBusqueda + 1;
+        while ( i < validos){
+
+            if(menor > arreglo[i]){
+
+                menor = arreglo[i];
+                posmenor = i;
+            }
+
+            i++;
+
+        }
+
+        return posmenor;
+    }

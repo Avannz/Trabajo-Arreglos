@@ -17,6 +17,8 @@ void capicua (int a[], int validos);
 void intercambiar(int a[], int validos);
 void ordenamientoSeleccion (int arreglo[], int validos);
 int posicionMenor (int arreglo[], int posInicioBusqueda, int validos);
+void ordenamientoInsercion (int arreglo[], int validos);
+void insertar(int arreglo[], int inicioBusqueda, int dato);
 
 int main()
 {
@@ -166,13 +168,18 @@ int main()
     case 11:
 
         cantidad = cargarArreglo(arreglo);
-        ordenamientoSeleccion(arreglo, cantidad);
+//        ordenamientoSeleccion(arreglo, cantidad);
+        ordenamientoInsercion(arreglo, cantidad);
 
         mostrarArreglo(arreglo, cantidad);
 
         break;
 
     case 12:
+
+            validos = cargarArreglo3(arreglocar);
+            mostrarArreglo2(arreglocar, validos);
+
 
         break;
 
@@ -501,3 +508,25 @@ int posicionMenor (int arreglo[], int posInicioBusqueda, int validos){
 
         return posmenor;
     }
+
+void ordenamientoInsercion (int arreglo[], int validos){
+
+    int i = 0;
+    while(i<validos-1){
+
+        insertar(arreglo,i,arreglo[i+1]);
+        i++;
+    }
+}
+
+void insertar(int arreglo[], int inicioBusqueda, int dato){
+
+    int i = inicioBusqueda;
+    while(i>=0 && dato <arreglo[i]){
+
+        arreglo[i+1] = arreglo[i];
+        i--;
+    }
+    arreglo[i+1] = dato;
+
+}
